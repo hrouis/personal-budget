@@ -1,0 +1,5 @@
+authentication : authoboss
+microservice : go-kit.
+build tool : bazel
+dokcer-compose
+configure remote server : lenovo t440p
