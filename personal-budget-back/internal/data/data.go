@@ -2,19 +2,19 @@ package data
 
 type amountDef struct {
 	Label     string
-	Amount    int64
+	Amount    float64
 	Frequency Frequency
 }
 
 //Account holds balance informations
 type Account struct {
 	AccountID            string
-	AvailableAmount      int64
+	AvailableAmount      float64
 	Revenues             []*Revenue
 	Expenses             []*Expense
-	Savings              int64
-	totalMonthlyExpenses int64
-	totalMonthlyRevenue  int64
+	Savings              float64
+	totalMonthlyExpenses float64
+	totalMonthlyRevenue  float64
 }
 
 //ExpenseCat expense category.
@@ -81,8 +81,8 @@ func (expense *Expense) equals(expense2 *Expense) bool {
 	return true
 }
 
-func (account *Account) getTotalRevenue(frequency Frequency) int64 {
-	var sum int64 = 0
+func (account *Account) getTotalRevenue(frequency Frequency) float64 {
+	var sum float64 = 0
 	for _, v := range account.Revenues {
 		if v.AmountDef.Frequency == frequency {
 			sum += v.AmountDef.Amount
@@ -91,8 +91,8 @@ func (account *Account) getTotalRevenue(frequency Frequency) int64 {
 	return sum
 }
 
-func (account *Account) getTotalExpenses(frequency Frequency) int64 {
-	var sum int64 = 0
+func (account *Account) getTotalExpenses(frequency Frequency) float64 {
+	var sum float64 = 0
 	for _, v := range account.Expenses {
 		if v.amountDef.Frequency == frequency {
 			sum += v.amountDef.Amount

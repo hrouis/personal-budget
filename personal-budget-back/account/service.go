@@ -10,7 +10,7 @@ import (
 
 //Service interface
 type Service interface {
-	CreateAccount(ctx context.Context, availableAmount int64) (string, error)
+	CreateAccount(ctx context.Context, availableAmount float64) (string, error)
 	AddRevenue(ctx context.Context, revenue data.Revenue, accountID string) (string, error)
 }
 
@@ -29,7 +29,7 @@ func NewService(rep Repository, logger log.Logger) Service {
 }
 
 //CreateAccount method implementation
-func (s service) CreateAccount(ctx context.Context, availableAmount int64) (string, error) {
+func (s service) CreateAccount(ctx context.Context, availableAmount float64) (string, error) {
 	logger := log.With(s.logger, "method", "CreateAccount")
 
 	uuid, _ := uuid.NewV4()
